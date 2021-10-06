@@ -1,9 +1,9 @@
-# from rest_framework import serializers
-#
-# from ..models import Branch
-#
-#
-# class BranchSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Branch
-#         fields = ["id", "title", ]
+from rest_framework import serializers
+
+from ..models import Transaction
+
+
+class TransactionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Transaction
+        fields = "__all__"

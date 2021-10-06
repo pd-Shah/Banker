@@ -13,10 +13,11 @@ class UserAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('national_code', 'is_superuser', 'is_superuser', 'is_active', 'is_staff',)
-    list_filter = ('national_code', 'is_superuser', 'is_superuser', 'is_active', 'is_staff', "user_permissions",)
+    list_display = ('national_code', 'is_superuser', 'is_active', 'is_staff',)
+    list_filter = ('national_code', 'is_superuser', 'is_active', 'is_staff', "user_permissions",)
     fieldsets = (
-        ("INFO", {'fields': ('national_code', 'password', 'profile', 'is_superuser', 'is_active', 'is_staff',)}),
+        ("INFO", {'fields': (
+            'national_code', 'phone_number', 'password', 'profile', 'is_superuser', 'is_active', 'is_staff',)}),
         ("AUTHENTICATION AND AUTHORIZATION", {'fields': ("groups", "user_permissions",)}),
 
     )
@@ -25,7 +26,7 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('national_code', 'password1', 'password2',),
+            'fields': ('national_code', 'phone_number', 'password1', 'password2',),
         }),
     )
     search_fields = ('national_code',)

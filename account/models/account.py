@@ -13,3 +13,7 @@ class Account(CommonBaseModel):
     @property
     def title(self, ):
         return str(self.branch) + "-->" + str(self.user)
+
+    @property
+    def balance(self, ):
+        return self.transaction_set.last()

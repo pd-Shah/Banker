@@ -10,7 +10,9 @@ from rest_framework_swagger.views import get_swagger_view
 
 # from django.conf.urls.static import static
 from Banker import settings
+from account.urls import router as account_router
 from branch.urls import router as branch_router
+from transaction.urls import router as transaction_router
 from user.urls import router as users_router
 
 schema = get_swagger_view(title="APIs")
@@ -20,6 +22,8 @@ urlpatterns = [
     path('api/v1/token/', views.obtain_auth_token),
     path('api/v1/branch/', include((branch_router.urls, 'branch'))),
     path('api/v1/user/', include((users_router.urls, 'user'))),
+    path('api/v1/transaction/', include((transaction_router.urls, 'transaction'))),
+    path('api/v1/account/', include((account_router.urls, 'account'))),
 ]
 
 if settings.DEBUG:
