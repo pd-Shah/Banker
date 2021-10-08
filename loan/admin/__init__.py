@@ -1,0 +1,1 @@
+from .loan import LoanAdmin

@@ -5,7 +5,6 @@ from .apis import (
 )
 
 router = DefaultRouter()
-
-router.register(r'user', ViewSetUser, basename='user')
+router.register(r'search', ViewSetUser, basename='search')
 
 urlpatterns = router.urls

@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from ..models import Transaction
 
-BASE = ['account', 'branch', 'init_value', 'value', 'type',
+BASE = ['source', 'destination', 'branch', 'init_value', 'value', 'type',
         'final_value', "created_at", "updated_at", ]
 
 

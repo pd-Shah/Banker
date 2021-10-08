@@ -1,1 +1,1 @@
-from .transaction import TransactionFilter
+from .search import SearchTransactionFilter

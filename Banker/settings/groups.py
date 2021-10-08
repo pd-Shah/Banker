@@ -1,2 +1,2 @@
 MANAGER = "manager"
-BRANCH_MANAGER = "branch_manager"
+BRANCH_MANAGER = "branch manager"

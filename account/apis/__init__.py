@@ -1,2 +1,2 @@
-from .create import ViewSetCreateAccount
+from .create import APIViewCreateAccount
 from .delete import APIViewDeleteAccount

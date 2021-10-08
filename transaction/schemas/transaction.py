@@ -1,9 +1,7 @@
 from rest_framework import serializers
 
-from ..models import Transaction
 
-
-class TransactionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Transaction
-        fields = "__all__"
+class TransactionSerializer(serializers.Serializer):
+    branch = serializers.CharField(max_length=64)
+    destination = serializers.CharField(max_length=64)
+    value = serializers.IntegerField()

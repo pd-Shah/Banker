@@ -4,7 +4,6 @@ from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularSwaggerView,
 )
-from rest_framework.authtoken import views
 # from django.conf.urls import url
 from rest_framework_swagger.views import get_swagger_view
 
@@ -13,13 +12,14 @@ from Banker import settings
 from account.urls import router as account_router
 from branch.urls import router as branch_router
 from transaction.urls import router as transaction_router
+from user.apis import CustomAuthToken
 from user.urls import router as users_router
 
 schema = get_swagger_view(title="APIs")
 
 urlpatterns = [
     path("site-admin/", admin.site.urls),
-    path('api/v1/token/', views.obtain_auth_token),
+    path('api/v1/token/', CustomAuthToken.as_view()),
     path('api/v1/branch/', include((branch_router.urls, 'branch'))),
     path('api/v1/user/', include((users_router.urls, 'user'))),
     path('api/v1/transaction/', include((transaction_router.urls, 'transaction'))),

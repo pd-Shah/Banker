@@ -12,7 +12,6 @@ from faker import Faker
 from account.models import Account
 
 NUMBER_OF_CUSTOMERS = 10
-faker = Faker()
 
 
 def create_branch():
@@ -35,44 +34,43 @@ def create_branch_manager():
     tehran_manager = User.objects.create(
         national_code="tehran manager",
         phone_number="09226255415",
-        password="password"
     )
+    tehran_manager.set_password("pass")
     tehran_manager.save()
     tehran_manager.groups.add(group)
 
     damavand_manager = User.objects.create(
         national_code="damavand manager",
         phone_number="091254454221",
-        password="password"
     )
+    damavand_manager.set_password("pass")
     damavand_manager.save()
     damavand_manager.groups.add(group)
 
     shiraz_manager = User.objects.create(
         national_code="shiraz manager",
         phone_number="09113586455",
-        password="password"
     )
+    shiraz_manager.set_password("pass")
     shiraz_manager.save()
     shiraz_manager.groups.add(group)
 
 
 def create_customer():
+    faker = Faker()
     for _ in range(NUMBER_OF_CUSTOMERS):
         obj = User.objects.create(
             national_code=faker.random_int(min=11111, max=99999),
             phone_number=faker.random_int(min=11111, max=99999),
-            password=faker.name(),
         )
+
+        obj.set_password("pass")
         obj.save()
 
 
 def create_manager():
-    manager = User.objects.create(
-        national_code="dsa",
-        phone_number="dsa",
-        password="dsa"
-    )
+    manager = User.objects.create(national_code="dsa", phone_number="dsa")
+    manager.set_password("pass")
     manager.save()
     group = Group.objects.filter(name="manager").first()
     manager.groups.add(group)
@@ -87,13 +85,32 @@ def create_group():
 
 
 def create_account():
+    faker = Faker()
     for user_id in range(NUMBER_OF_CUSTOMERS):
         branch_id = faker.random_int(min=1, max=Branch.objects.count())
         try:
-            account = Account.objects.create(user_id=user_id, branch_id=branch_id)
+            account = Account.objects.create(user_id=user_id, branch_id=branch_id,
+                                             balance=faker.random_int(min=0, max=99999))
             account.save()
         except:
             pass
+
+
+def create_specials():
+    banker_user = User.objects.create(
+        national_code="banker",
+        phone_number="banker",
+    )
+
+    banker_user.set_password("banker")
+    banker_user.save()
+
+    banker_branch = Branch.objects.create(title="banker",
+                                          branch_manager=User.objects.filter(national_code="banker", ).first())
+    banker_branch.save()
+
+    Bank = Account.objects.create(user=banker_user, branch=banker_branch, balance=99999999)
+    Bank.save()
 
 
 if __name__ == "__main__":
@@ -103,3 +120,4 @@ if __name__ == "__main__":
     create_branch()
     create_manager()
     create_account()
+    create_specials()

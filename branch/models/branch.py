@@ -4,4 +4,4 @@ from .common import CommonBaseModel
 
 
 class Branch(CommonBaseModel):
-    branch_manager = models.OneToOneField("user.User", on_delete=models.PROTECT)
+    branch_manager = models.OneToOneField("user.User", on_delete=models.PROTECT, null=True, blank=True)

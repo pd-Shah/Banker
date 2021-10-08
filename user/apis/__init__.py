@@ -1,1 +1,2 @@
-from .user import ViewSetUser
+from .search import ViewSetUser
+from .token import CustomAuthToken

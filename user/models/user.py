@@ -19,3 +19,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     @property
     def title(self):
         return self.national_code
+
+    def __str__(self):
+        return "{0}.{1}".format(self.id, self.national_code)

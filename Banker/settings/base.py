@@ -57,6 +57,7 @@ CREATED_APPS = [
     'branch.apps.BranchConfig',
     'account.apps.AccountConfig',
     'transaction.apps.TransactionConfig',
+    'loan.apps.LoanConfig',
 ]
 INSTALLED_APPS = DEFAULT_APPS + CREATED_APPS + THIRD_PARTY_APPS
 ALLOWED_HOSTS = []
@@ -167,8 +168,8 @@ try:
 except Exception:
     pass
 
-# jalali Configuration
+# swagger
 try:
-    from .jalali_settings import *
+    from .swagger import *
 except Exception:
     pass
