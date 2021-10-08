@@ -1,11 +1,31 @@
 # Banker
 
-this is awesome, every things is going to run automatically.
+Everythings are going to run automatically.
 
 ## HOW TO RUN
-only thing which you have to do is run the `run.sh` file with `a right parameter`. the parameter is depends on environment which you are on `Development` | `production` | `testing`.
 
-it, First makes right `docker-compose.yml` config by running below commands:
+there are two options to run:
+1. run Django locally - without Celery and Redis 2. Full Run
+
+### Option 1 - run locally
+
+SO to run project in `development mode` just run:
+
+```bash
+chmod  777 drop_db.sh 
+./drop_db.sh
+```
+
+### Option 2 - Full Run
+
+to run project in `development mode` just run:
+
+```bash
+chmod  777 run.sh 
+./run.sh development
+```
+
+Also `run.sh` could take options:
 
 ```bash
 ./run.sh [options]
@@ -17,10 +37,13 @@ it, First makes right `docker-compose.yml` config by running below commands:
 		testing
 ```
 
-### Finally
-SO to run project in `development mode` just run:
+## HOW TO USE
+just import `./APIs.json` to the `postman` appllication, this shows you the way...
+
+## Any Docker Problem
+this could depends on many things... but let's check this:
+
 ```bash
-chmod  777 run.sh 
+sudo docker rm -f $(sudo docker ps -aq)
 ./run.sh development
 ```
-
